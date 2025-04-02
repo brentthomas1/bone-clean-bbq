@@ -25,7 +25,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      # Use the latest version of upload-artifact explicitly
       - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: .
+          if-no-files-found: error
+      # Use the pages artifact upload action
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: '.'
